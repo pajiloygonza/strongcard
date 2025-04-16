@@ -1,0 +1,71 @@
+.business-component {
+  max-width: 40%;
+  margin: 0 auto;
+  padding: 25px;
+  background-color: #fff;
+}
+
+.business-component h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.business-component p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: var(--secondary-color);
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--hover-color);
+}
+
+.error {
+  color: red;
+  font-size: 16px;
+  margin-top: 5px;
+  text-align: left !important;
+}
+
+.error-input {
+  border: 1px solid red !important;
+}
+
+.error-label {
+  color: red;
+}
+

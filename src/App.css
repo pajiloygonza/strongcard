@@ -1,0 +1,17 @@
+:root {
+  --primary-color: #272727;
+  --secondary-color: #ffd700;
+  --desktop: 1440px;
+  --hover-color: hsl(48, 92%, 45%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", serif;
+}
+
+a {
+  text-decoration: none;
+}

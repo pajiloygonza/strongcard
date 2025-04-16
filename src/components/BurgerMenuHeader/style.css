@@ -1,0 +1,32 @@
+.box__burgermenu {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.box__burgermenu.fixed {
+  position: fixed;
+  top: 20px;
+}
+.box__burgermenu__stripe {
+  width: 30px;
+  height: 3px;
+  background: white;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  margin-top: 5px;
+}
+
+.box__burgermenu__stripe:first-child {
+  margin-top: 0;
+}
+
+.box__burgermenu.open .box__burgermenu__stripe:nth-child(1) {
+  transform: translateY(8px) rotate(42deg);
+}
+
+.box__burgermenu.open .box__burgermenu__stripe:nth-child(2) {
+  opacity: 0;
+}
+
+.box__burgermenu.open .box__burgermenu__stripe:nth-child(3) {
+  transform: translateY(-8px) rotate(-42deg);
+}

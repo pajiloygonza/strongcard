@@ -1,0 +1,120 @@
+@media (max-width: 460px) {
+  .mediaPopup {
+    padding: 10px !important;
+    width: 360px;
+  }
+
+  .pricingMedia {
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 10px;
+  }
+
+  .mediaText {
+    width: 250px !important;
+  }
+}
+
+.welcomepopup {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  color: rgb(29, 29, 31);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.mediaPopup {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 30px 38px;
+  border-radius: 4px;
+  text-align: center;
+  max-width: 380px;
+}
+.inputPopup:nth-child(2) {
+  margin-top: 10px;
+}
+.inputPopup button {
+  background: red;
+}
+.inputPopup input {
+  color: rgb(29, 29, 31);
+  width: 100%;
+  height: 35px;
+  border: 1px solid rgb(201, 201, 206);
+  border-radius: 4px;
+  box-shadow: transparent 0px 0px 0px 3px;
+  color: rgb(29, 29, 31);
+  cursor: text;
+  font-size: 16px;
+  transition: border 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background: rgb(240, 239, 238);
+  margin-bottom: 20px;
+}
+form .inputPopup {
+  height: 35px;
+}
+.inputPopup::placeholder {
+  color: rgb(29, 29, 31) !important;
+}
+
+.inputPopup:hover {
+  border-color: rgb(138, 137, 226);
+}
+
+.inputPopup:focus {
+  border-color: rgb(138, 137, 226);
+}
+
+.buttonlogin {
+  background-color: rgb(44, 44, 47) !important;
+  margin-top: 45px;
+}
+
+.buttonlogin:hover {
+  background-color: rgb(54, 54, 57) !important;
+}
+.container__register {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.9px);
+  -webkit-backdrop-filter: blur(1.9px);
+}
+.container__register__content {
+  background: pink;
+  border-radius: 10px;
+  padding: 20px 30px;
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.9px);
+  -webkit-backdrop-filter: blur(1.9px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.text__register{
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+}
