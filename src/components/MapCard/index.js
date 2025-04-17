@@ -30,7 +30,7 @@ const MapCard = ({ place }) => {
           {place ? (
             <>
               <div className="map__card__discount">
-                <p>{place.discount || "10% "}</p>
+                <p>{place.discount || "20% "}</p>
               </div>
               <div className="map__card__logo">
                 <a href="#">

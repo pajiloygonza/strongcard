@@ -194,13 +194,13 @@
   transition: width 0.5s ease; 
 }
 .collapsed {
-  width: 50px; /* Ширина после сужения */
+  width: 50px; 
 }
 .map__card__sliderButton__icon {
   transition: transform 0.3s ease;
 }
 .collapsed .map__card__content {
-  display: none; /* Скрытие содержимого при сужении */
+  display: none; 
 }
 .main__text {
   font-size: 16px;
