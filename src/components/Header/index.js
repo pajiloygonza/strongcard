@@ -101,6 +101,11 @@ const Header = ({ setIsLoginPopupVisible, setIsSignupPopupVisible }) => {
             <li
               className="header__nav__bottom__list__item"
               onClick={toggleCityDropdown}
+
+
+
+
+              
             >
               {/* <div className="custom-select">
                 <div className="select-selected">
