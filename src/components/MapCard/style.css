@@ -191,7 +191,7 @@
 }
 
 .map__card {
-  transition: width 0.5s ease; /* Плавная анимация изменения ширины */
+  transition: width 0.5s ease; 
 }
 .collapsed {
   width: 50px; /* Ширина после сужения */
