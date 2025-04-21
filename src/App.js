@@ -76,7 +76,7 @@ function App() {
         isVisible={isSignupPasswordPopupVisible}
         setIsVisible={setIsSignupPasswordPopupVisible}
       />
-      <Banner />
+      
       <Header
         setIsLoginPopupVisible={setIsLoginPopupVisible}
         setIsSignupPopupVisible={setIsSignupPopupVisible}
