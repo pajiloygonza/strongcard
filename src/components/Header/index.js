@@ -129,7 +129,7 @@ const Header = ({ setIsLoginPopupVisible, setIsSignupPopupVisible }) => {
               <a href="#">Карточки</a>
             </li>
             <li className="header__nav__bottom__list__item">
-              <a href="#">Акции</a>
+              <Link to="/catalogSales">Акции</Link>
             </li>
             {/* <li className="header__nav__bottom__list__item">
               <Link to="/business">Сотрудничество</Link>
