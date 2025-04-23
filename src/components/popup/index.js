@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./assets/css/style.css";
 
 import { Link } from "react-router-dom";
 
 export const Popup = ({ isVisible, setIsVisible, children }) => {
+  const contentRef = useRef(null);
+
+  const handleOutsideClick = (e) => {
+    if (contentRef.current && !contentRef.current.contains(e.target)) {
+      setIsVisible(false);
+    }
+  };
+
   return (
     <>
       {isVisible && (
         <>
           <div
-            className="fixed inset-0 bg-black/20 modal-mask-enter-done "
+            className="fixed inset-0 bg-black/20 modal-mask-enter-done"
             style={{ zIndex: 1000, pointerEvents: "auto" }}
-            onClick={() => {
-              setIsVisible(false);
-            }}
+            onClick={handleOutsideClick}
           />
-          <div className="container__register" style={{ zIndex: 1001 }}>
-            <div className="container__register__content">
+          <div
+            className="container__register"
+            style={{ zIndex: 1001 }}
+            onClick={handleOutsideClick}
+          >
+            <div
+              className="container__register__content"
+              ref={contentRef}
+              onClick={(e) => e.stopPropagation()} // Останавливаем всплытие события
+            >
               <div
                 style={{
                   width: "100%",
@@ -61,9 +75,7 @@ export const Popup = ({ isVisible, setIsVisible, children }) => {
                 </button>
 
                 <div className="flex w-full flex-col">
-                  <div className="text__register">
-                    {/* Регистрация */}
-                  </div>
+                  <div className="text__register">{/* Регистрация */}</div>
                   <div className="sm:px-5">{children}</div>
                   {/* <div className="sm:px-5">{"switcher"}</div> */}
                 </div>

@@ -10,7 +10,7 @@
 .cards-banner__title {
   border: 1px solid #ddd;
   border-radius: 10px;
-  font-size: 32px;
+  font-size: clamp(24px, 3.3vw, 32px);
   padding: 10px 0px 10px 13px;
   margin-bottom: 20px;
   box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.1);
@@ -19,7 +19,7 @@
 }
 
 .cards-banner__content {
-  gap: 20px;
+  gap: 18px;
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -94,14 +94,16 @@
 }
 
 .cards-banner__discount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--secondary-color);
   color: black;
   padding: 5px 10px;
   border-radius: 0px 0px 10px 10px;
   width: 100px;
   height: 40px;
-  font-size: 23px;
-  text-align: center;
+  font-size: clamp(17px, 2.5vw, 23px);
 }
 
 .swiper-slide {
@@ -121,13 +123,12 @@
 .swiper {
   width: 100%;
 }
-.cards-banner__link  {
+.cards-banner__link {
   text-decoration: none;
-  color: inherit; 
+  color: inherit;
   width: 100%;
+  height: 100%;
 }
-
-
 
 @keyframes fadeSlideLeft {
   from {
@@ -184,12 +185,12 @@
     justify-content: center;
     margin-bottom: 15px;
   }
-  .cards-banner {
-    margin-bottom: 80px;
+  .promotion-carousel{
+    padding: 40px !important;
   }
 }
 
-@media (max-width: 916px) {
+@media (max-width: 1006px) {
   .cards-banner__place {
     min-width: unset;
   }
@@ -221,11 +222,11 @@
   }
 
   .cards-banner__category {
-    font-size: 14px;
+    font-size: clamp(12px, 2vw, 14px);
   }
 
   .cards-banner__name {
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px); 
   }
 
   .cards-banner__place {
@@ -239,25 +240,32 @@
   .cards-banner__category {
     display: none;
   }
-}
-
-@media (max-width: 576px) {
-  .cards-banner__name {
-    display: none;
+  .cards-banner__discount{
+    height: 30px;
   }
 }
-@media (max-width: 522px) {
+@media (max-width: 650px) {
+  .buttons-page_button {
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .buttons-page_button.active {
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+@media (max-width: 650px) {
   .swiper-container {
     display: flex;
     flex-direction: column;
   }
-  .cards-banner__title{
-    margin-bottom: 20px;
+  .cards-banner__title {
+    margin-bottom: 8px;
   }
-  .swiper-wrapper {
+  .swiper-wrapper:nth-child(1) {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 8px;
   }
   .cards-banner__content {
     height: 100%;
@@ -270,8 +278,11 @@
     align-items: center;
     justify-content: center;
   }
+  .mySwiper > .swiper-wrapper > .swiper-slide {
+    min-width: 100%;
+  }
   .swiper-slide {
-    width: 100% !important; 
+    width: 100% !important;
   }
   .cards-banner__name {
     display: unset;
@@ -284,11 +295,18 @@
   }
   .cards-banner__discount {
     align-self: center;
+    border-radius: 8px 0px 10px 0px;
   }
   .cards-banner__image-container,
   .cards-banner__image {
     padding: 2px;
   }
+  .promotion-header-container, .promotion-header {
+    margin-bottom: 20px;
+}
+.promotion-header{
+  margin-bottom: 20px;
+}
 }
 @media screen and (max-width: 433px) {
   .cards-banner__content {
@@ -314,6 +332,6 @@
     max-width: 100%;
   }
   .cards-banner__name {
-    font-size: 12px;
+    font-size: clamp(10px, 2vw, 12px); 
   }
 }

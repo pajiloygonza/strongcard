@@ -2,7 +2,7 @@
   --primary-color: #272727;
   --secondary-color: #ffd700;
   --desktop: 1440px;
-  --hover-color: hsl(48, 92%, 45%);
+  --hover-color: hsl(48, 93%, 44%);
 }
 
 * {
@@ -14,4 +14,10 @@
 
 a {
   text-decoration: none;
+}
+p{
+  font-size: clamp(14px, 2vw, 16px);
+}
+h2{
+  font-size: clamp(18px, 2.5vw, 24px);
 }

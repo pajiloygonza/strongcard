@@ -10,7 +10,7 @@
 .buttons-page_button {
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px);
   border-radius: 10px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -59,7 +59,7 @@
 .buttons-last_button {
   background-color: #f0f0f0;
   border-radius: 15px;
-  font-size: 28px;
+  font-size: clamp(20px, 3vw, 28px);
   text-align: center;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -123,11 +123,9 @@
   }
 }
 
-@media screen and (max-width:354px) {
+@media screen and (max-width: 354px) {
   .buttons-page_button.active {
     width: 35px;
     height: 35px;
   }
 }
-
-

@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import "./style.css";
-import ninja from "../../assets/img/ninja.png";
-import { Link } from "react-router";
 
 const MapCard = ({ place }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const toggleCollapse = () => {
     setIsCollapsed((prevState) => !prevState);
+  };
+
+  const getImagePath = (img) => {
+    try {
+      return require(`../../assets/img/${img}`);
+    } catch (error) {
+      console.error(`Image not found: ${img}`);
+      return ""; // Возвращаем пустую строку, если изображение не найдено
+    }
   };
 
   return (
@@ -30,11 +37,14 @@ const MapCard = ({ place }) => {
           {place ? (
             <>
               <div className="map__card__discount">
-                <p>{place.discount || "20% "}</p>
+                <p>{place.discount || "20%"}</p>
               </div>
               <div className="map__card__logo">
                 <a href="#">
-                  <img src={ninja} alt="ninja" />
+                  <img
+                    src={getImagePath(place.img)}
+                    alt={place.name || "Изображение"}
+                  />
                 </a>
               </div>
               <div className="map__card__title">
@@ -44,9 +54,6 @@ const MapCard = ({ place }) => {
                 <h4 className="map__card__title__h4">
                   {place.name || "Название"}
                 </h4>
-                <h4 className="map__card__title__h4">
-                  {place.secondName || ""}
-                </h4>
               </div>
               <div className="map__card__address">
                 <h4 className="map__card__address__h4">Адрес</h4>
@@ -54,23 +61,13 @@ const MapCard = ({ place }) => {
               </div>
               <div className="map__card__phone">
                 <h4 className="map__card__phone__h4">Телефон</h4>
-                {/* {place.phone ? (
-                  place.phone.map((phoneNumber, index) => (
-                    <p className="map__card__phone__p" key={index}>
-                      {phoneNumber}
-                    </p>
-                  ))
-                ) : ( */}
-                  <>
-                    <p className="map__card__phone__p">+375 (29) 123-45-67</p>
-                    <p className="map__card__phone__p">+375 (29) 123-45-67</p>
-                  </>
-                {/* )} */}
+                <p className="map__card__phone__p">{place.phone || ""}</p>
+                <p className="map__card__phone__p">{place.phone2 || ""}</p>
               </div>
               <div className="map__card__content">
                 <div className="map__card__button">
                   <button className="map__card__button__button">
-                  Подробнее
+                    Подробнее
                   </button>
                 </div>
               </div>

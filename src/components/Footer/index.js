@@ -33,10 +33,14 @@ const Footer = () => {
           </h4>
           <ul className="mainFooter__contacts__ul">
             <li className="mainFooter__contacts__li">
-              <span className="mainFooter__contacts__li__p">+375 (29) 123-45-67</span>
+              <span className="mainFooter__contacts__li__p">
+                +375 (29) 123-45-67
+              </span>
             </li>
             <li className="mainFooter__contacts__li">
-              <span className="mainFooter__contacts__li__p">+375 (29) 123-45-67</span>
+              <span className="mainFooter__contacts__li__p">
+                +375 (29) 123-45-67
+              </span>
             </li>
             <li className="mainFooter__contacts__li">
               <span className="mainFooter__contacts__li__p">
@@ -59,7 +63,13 @@ const Footer = () => {
               <img src={instagram} alt="instagram" />
             </a>
           </div>
-          <p className="mainFooter__media__p">strongcard.by, 2022</p>
+          <p className="mainFooter__media__p">
+            strongcard.by,{" "}
+            {new Date().toLocaleString("en-US", {
+              year: "numeric",
+              month: "long",
+            })}
+          </p>
         </div>
       </div>
     </footer>

@@ -27,7 +27,7 @@ const CustomSelect = ({ options, selectedValue, onChange, label }) => {
       {label}
       <div className="custom-select" ref={selectRef}>
         <div
-          className="custom-select__selected"
+          className="custom-select__selected "
           onClick={() => setIsDropdownVisible((prev) => !prev)}
         >
           {options.find((option) => option.value === selectedValue)?.label ||

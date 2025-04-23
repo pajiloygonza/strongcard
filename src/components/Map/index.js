@@ -17,9 +17,9 @@ import icon1 from "../../assets/img/arrow-left-5-svgrepo-com.svg";
 
 function MyMap({ ymaps }) {
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const [isCardVisible, setIsCardVisible] = useState(false); // По умолчанию свернуто
   const mapRef = useRef(null); // создаём ref для карты
 
-  // ...existing code...
   const customMarkerLayout = useMemo(() => {
     if (!ymaps?.templateLayoutFactory) return null;
     return ymaps.templateLayoutFactory.createClass(`
@@ -59,12 +59,20 @@ function MyMap({ ymaps }) {
   }, [ymaps]);
 
   const handlePlaceSelect = (geo) => {
-    // ...existing code if needed...
+    // Логика для выбора места через поиск (если нужно)
+  };
+
+  const handleMarkerClick = (place) => {
+    setSelectedPlace(place); // Устанавливаем выбранное место
+    setIsCardVisible(true); // Открываем карту
+    if (mapRef.current) {
+      // Зумим к координатам маркера
+      mapRef.current.setCenter(place.geo, 14, { duration: 300 });
+    }
   };
 
   return (
     <div className="map__container">
-      {/* передаём ref в instanceRef */}
       <YMap
         defaultState={{ center: [53.9, 27.5667], zoom: 10 }}
         width="100%"
@@ -90,21 +98,24 @@ function MyMap({ ymaps }) {
                   radius: 25,
                 },
               }}
-              onClick={() => {
-                console.log("Маркер кликнут:", place.name);
-                setSelectedPlace(place);
-                if (mapRef.current) {
-                  // Зумим к координатам маркера
-                  mapRef.current.setCenter(place.geo, 14, { duration: 300 });
-                }
-              }}
+              onClick={() => handleMarkerClick(place)}
             />
           ))}
         </Clusterer>
       </YMap>
 
-      <div className="main__map__card">
-        <MapCard place={selectedPlace} />
+      {/* Управляем видимостью map__card */}
+      <div
+        className={`main__map__card ${isCardVisible ? "visible" : "collapsed"}`}
+        style={{ width: isCardVisible ? "300px" : "30px" }}
+      >
+        <div
+          className={`map__card__content ${
+            isCardVisible ? "open" : "collapsed"
+          }`}
+        >
+          {isCardVisible && <MapCard place={selectedPlace} />}
+        </div>
         <MapSearch onPlaceSelect={handlePlaceSelect} />
       </div>
     </div>
@@ -113,7 +124,7 @@ function MyMap({ ymaps }) {
 
 const MapWithCustomMarkers = withYMaps(MyMap, true, ["templateLayoutFactory"]);
 
-export default function Map( {}) {
+export default function Map() {
   return (
     <YMaps>
       <MapWithCustomMarkers />

@@ -7,7 +7,7 @@
   .pricingMedia {
     padding-left: 0px;
     padding-right: 0px;
-    font-size: 10px;
+    font-size: clamp(8px, 1.5vw, 10px);
   }
 
   .mediaText {
@@ -22,7 +22,7 @@
   gap: 10px;
   justify-content: center;
   color: rgb(29, 29, 31);
-  font-size: 20px;
+  font-size: clamp(16px, 2.3vw, 20px);
   font-weight: 600;
   line-height: 1.45;
 }
@@ -43,6 +43,9 @@
 .inputPopup button {
   background: red;
 }
+.imgcur{
+  display: none;
+}
 .inputPopup input {
   color: rgb(29, 29, 31);
   width: 100%;
@@ -52,7 +55,7 @@
   box-shadow: transparent 0px 0px 0px 3px;
   color: rgb(29, 29, 31);
   cursor: text;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
   transition: border 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   background: rgb(240, 239, 238);
   margin-bottom: 20px;
@@ -113,8 +116,17 @@ form .inputPopup {
   backdrop-filter: blur(1.9px);
   -webkit-backdrop-filter: blur(1.9px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+ 
 }
 .text__register{
   color: var(--secondary-color);
   margin-bottom: 8px;
+}
+.inputLoginOrSingup::placeholder{
+  padding-left: 6px;
+}
+@media (max-width: 450px) {
+  .container__register__content {
+    width: 90%;
+  }
 }

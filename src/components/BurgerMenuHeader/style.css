@@ -30,3 +30,9 @@
 .box__burgermenu.open .box__burgermenu__stripe:nth-child(3) {
   transform: translateY(-8px) rotate(-42deg);
 }
+@media(max-width: 530px) {
+  .box__burgermenu__stripe {
+  width: 25px;
+  height: 2.5px;
+}
+}
