@@ -22,7 +22,7 @@
 .map__search__icon {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: clamp(16px, 2.3vw, 20px);
   cursor: pointer;
   padding: 5px;
 }
@@ -31,7 +31,7 @@
   border: none;
   outline: none;
   padding: 8px;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
   background: transparent;
 }
 
@@ -160,7 +160,7 @@ select option {
 
 select::after {
   content: "\25BC";
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
   color: #7d664b;
   position: absolute;
   right: 10px;
@@ -173,7 +173,7 @@ select::after {
 
 .value {
   margin-top: 10px;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
 }
 
 .custom-select {
@@ -306,7 +306,7 @@ input[type="range"]::-moz-range-track {
 
 .value {
   margin-top: 10px;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
   color: #333;
 }
 @media (max-width: 524px) {

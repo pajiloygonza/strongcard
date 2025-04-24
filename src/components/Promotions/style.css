@@ -27,7 +27,7 @@
 }
 .catalog__list__section__h1 {
   font-weight: 450;
-  font-size: 38px;
+  font-size: clamp(26px, 3.5vw, 38px); 
   padding-top: 0.1rem;
   padding-bottom: 0.8rem;
 }
@@ -35,7 +35,7 @@
   width: 100%;
 }
 .catalog__list__section__description__p {
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
   font-weight: 400;
   line-height: 1.5;
 }
@@ -55,11 +55,11 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
 }
 
 .section2__sorting__dropdown {
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.125);
   cursor: pointer;
@@ -99,12 +99,12 @@
   flex-direction: column;
 }
 .catalog__list__goods__card__info h2 {
-  font-size: 20px;
+  font-size: clamp(16px, 2.3vw, 20px);
   font-weight: 500;
   color: #ff5c57;
 }
 .catalog__list__goods__card__info__rating {
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
   color: rgba(0, 0, 0, 0.6);
   margin-top: 7px;
   font-weight: 400;
@@ -143,7 +143,7 @@
 .catalog__list__sorting__dropdown {
   width: 100%;
   font-family: "Arial", sans-serif;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
   height: 35px;
   padding: 0 30px 0 10px;
   border: 2px solid #d6d6d6;
@@ -164,7 +164,7 @@
   margin-top: 8px;
 }
 .catalog__selects label {
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
   font-weight: 500;
   margin-top: 10px;
   display: flex;

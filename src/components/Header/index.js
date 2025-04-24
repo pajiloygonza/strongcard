@@ -101,11 +101,6 @@ const Header = ({ setIsLoginPopupVisible, setIsSignupPopupVisible }) => {
             <li
               className="header__nav__bottom__list__item"
               onClick={toggleCityDropdown}
-
-
-
-
-              
             >
               {/* <div className="custom-select">
                 <div className="select-selected">
@@ -126,20 +121,11 @@ const Header = ({ setIsLoginPopupVisible, setIsSignupPopupVisible }) => {
               <Link to="/catalog">Каталог</Link>
             </li>
             <li className="header__nav__bottom__list__item">
-              <a href="#">Карточки</a>
+              <Link to="/catalog">Каталог</Link>
             </li>
             <li className="header__nav__bottom__list__item">
-              <Link to="/catalogSales">Акции</Link>
+              <Link to="/catalog">Каталог</Link>
             </li>
-            {/* <li className="header__nav__bottom__list__item">
-              <Link to="/business">Сотрудничество</Link>
-            </li> */}
-            {/* <li className="header__nav__bottom__list__item">
-              <a href="#">Контакты</a>
-            </li>
-            <li className="header__nav__bottom__list__item">
-              <a href="#">FAQ</a>
-            </li> */}
           </ul>
           <div className="header__nav__bottom__social">
             <div className="header__nav__bottom__phone">
@@ -159,6 +145,18 @@ const Header = ({ setIsLoginPopupVisible, setIsSignupPopupVisible }) => {
               </a>
             </div>
           </div>
+          <button
+            className="header__nav__top__auth__btn header__btn__bottom"
+            onClick={() => setIsSignupPopupVisible(true)}
+          >
+            Зарегистрироваться
+          </button>
+          <button
+            className="header__nav__top__auth__btn header__btn__bottom"
+            onClick={() => setIsLoginPopupVisible(true)}
+          >
+            Войти
+          </button>
         </div>
       </div>
     </header>

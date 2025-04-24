@@ -1,7 +1,7 @@
 .place-details {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  /* padding: 40px; */
   background-color: #ffffff;
   border: 3px solid rgb(228, 225, 225);
 
@@ -10,10 +10,12 @@
 .place-details__header {
   display: flex;
   width: 100%;
+  padding: 20px;
+  justify-content: center;
 }
 .place-details__name {
   color: var(--secondary-color);
-  font-size: 40px;
+  font-size: clamp(28px, 3.5vw, 40px); 
   margin: 10px 0;
   text-align: center;
 }
@@ -52,6 +54,8 @@
 .dropdown {
   position: relative;
   z-index: 10;
+  height: auto;
+  /* height: 36px; */
 }
 .dropdown-menu {
   background-color: white;
@@ -72,10 +76,11 @@
   opacity: 1;
 }
 .dropdown-menu li {
-  padding: 10px 20px;
+  padding: clamp(5px, 1.5vw, 10px) clamp(2px, 2vw, 20px);
   cursor: pointer;
   border-bottom: 1px solid #ddd;
   transition: background-color 0.3s ease;
+  font-size: clamp(14px, 2vw, 16px);
 }
 .dropdown-menu li:last-child {
   border-bottom: none;
@@ -87,7 +92,7 @@
 
 .place-details__image-container {
   position: relative;
-  max-width: 50%;
+  max-width: 66%;
 }
 
 .place-details__image {
@@ -108,7 +113,7 @@
   padding: 5px 10px;
   border-radius: 5px;
   font-weight: bold;
-  font-size: 24px;
+  font-size: clamp(18px, 2.5vw, 24px);
   text-align: center;
   max-width: 25%;
     width: 100%;
@@ -128,7 +133,7 @@
 
 .place-details__info h2 {
   margin: 2% 0%;
-  font-size: 40px;
+  font-size: clamp(28px, 3.5vw, 40px); 
 }
 
 .place-details__info p {
@@ -141,7 +146,7 @@
   width: 100%;
   margin-top: 20px;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 11px 10px 0px 10px;
 }
 
 .place-details__button {
@@ -152,6 +157,8 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.place-details__button:nth-child(1), .place-details__button:nth-child(2){
   margin-bottom: 10px;
 }
 
@@ -169,7 +176,7 @@
     height: 200px;
   }
   .place-details__info h2 {
-    font-size: 30px;
+    font-size: clamp(22px, 3.2vw, 30px);
   }
   .place-details__info {
     max-width: 100%;
@@ -182,16 +189,16 @@
     align-items: center;
   }
   .place-details__info {
-    padding: 25px;
+    padding: 15px;
   }
   .place-details__image {
     width: 100%;
     height: 100%;
   }
   .place-details__discount {
-    max-width: 35%;
+    max-width: 50%;
   }
   .place-details__info h2 {
-    font-size: 24px;
+    font-size: clamp(18px, 2.5vw, 24px);
   }
 }

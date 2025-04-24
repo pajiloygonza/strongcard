@@ -120,20 +120,6 @@ const PromotionCarousel = ({ promotions }) => {
                               isCritical ? "critical-timer" : ""
                             }`}
                           >
-                            <div className="time-unit">
-                              <span className="time-value">{days}</span>
-                              <span className="time-label">Дней</span>
-                            </div>
-                            <span className="colon">:</span>
-                            <div className="time-unit">
-                              <span className="time-value">{hours}</span>
-                              <span className="time-label">Часа</span>
-                            </div>
-                            <span className="colon">:</span>
-                            <div className="time-unit">
-                              <span className="time-value">{minutes}</span>
-                              <span className="time-label">Минут</span>
-                            </div>
                           </div>
                         )}
                       </div>

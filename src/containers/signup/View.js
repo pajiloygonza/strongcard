@@ -21,7 +21,7 @@ export const SignupView = ({
       >
         <input
           spellCheck="false"
-          className="align-middle cursor-text text-t1 flex-grow text-black outline-none bg-transparent placeholder-grey4 w-full"
+          className="inputLoginOrSingup align-middle cursor-text text-t1 flex-grow text-black outline-none bg-transparent placeholder-grey4 w-full"
           type="text"
           maxLength={-1}
           minLength={6}
@@ -35,12 +35,10 @@ export const SignupView = ({
           </span>
         )}
       </div>
-      <div
-        className="inputPopup flex items-center rounded relative box-border bg-grey8 text-t2 border border-grey6 focus-within-border t-input-account mb-5 h-[50px] w-full px-3 h-md:text-h4"
-      >
+      <div className="inputPopup flex items-center rounded relative box-border bg-grey8 text-t2 border border-grey6 focus-within-border t-input-account mb-5 h-[50px] w-full px-3 h-md:text-h4">
         <input
           spellCheck="false"
-          className="align-middle cursor-text text-t1 flex-grow text-black outline-none bg-transparent placeholder-grey4 w-full"
+          className="inputLoginOrSingup align-middle cursor-text text-t1 flex-grow text-black outline-none bg-transparent placeholder-grey4 w-full"
           type="text"
           maxLength={-1}
           minLength={6}
@@ -69,19 +67,6 @@ export const SignupView = ({
       >
         Зарегистрироваться{" "}
       </button>
-      <div
-        className="text-t1 mt-3 flex cursor-pointer justify-center"
-        style={{
-          color: "#ffd700",
-          fontSize: "14px",
-        }}
-        onClick={() => {
-          setIsVisible(false);
-          setIsLoginPopupVisible(true);
-        }}
-      >
-        Забыли пароль?{" "}
-      </div>
     </>
   );
 };

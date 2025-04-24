@@ -27,7 +27,7 @@ export const LoginView = ({
       >
         <input
           spellCheck="false"
-          className="align-middle cursor-text text-t1 flex-grow text-black outline-none bg-transparent placeholder-grey4 w-full"
+          className="inputLoginOrSingup align-middle cursor-text text-t1 flex-grow text-black outline-none bg-transparent placeholder-grey4 w-full"
           type="text"
           maxLength={-1}
           minLength={6}
@@ -44,7 +44,7 @@ export const LoginView = ({
       <div className="inputPopup flex items-center rounded relative box-border bg-grey8 text-t2 border border-grey6 focus-within-border t-input-account mb-5 h-[50px] w-full px-3 h-md:text-h4">
         <input
           spellCheck="false"
-          className="align-middle cursor-text text-t1 flex-grow text-black outline-none bg-transparent placeholder-grey4 w-full"
+          className="inputLoginOrSingup align-middle cursor-text text-t1 flex-grow text-black outline-none bg-transparent placeholder-grey4 w-full"
           type={isPasswordVisible ? "text" : "password"}
           maxLength={-1}
           minLength={5}
@@ -64,7 +64,7 @@ export const LoginView = ({
           {isPasswordVisible ? (
             <img
               src={icon}
-              className="absolute right-2.5 h-5 w-5 cursor-pointer text-grey3"
+              className=" imgcur absolute right-2.5 h-5 w-5 cursor-pointer text-grey3"
               alt="Toggle Password Visibility"
               style={{
                 marginBottom: "0px",
@@ -73,7 +73,7 @@ export const LoginView = ({
           ) : (
             <img
               src={icon1}
-              className="absolute right-2.5 h-5 w-5 cursor-pointer text-grey3"
+              className="imgcur absolute right-2.5 h-5 w-5 cursor-pointer text-grey3"
               alt="Toggle Password Visibility"
               style={{
                 marginBottom: "0px",
@@ -86,28 +86,29 @@ export const LoginView = ({
         disabled={
           !phone || phoneError || !password || passwordError || isLoading
         }
-        className={`buttonlogin flex justify-center items-center rounded border outline-none bg-black1 border-black text-white dark:border-grey6 ${
+        className={`${
           !phone || phoneError || !password || passwordError || isLoading
             ? "cursor-not-allowed opacity-30"
             : "cursor-pointer"
         } t-btn-login text-t1-medium mt-7 h-[50px] w-full sm:mt-3 h-md:text-h4`}
         type="submit"
       >
-        qweqweqew
+        Войти
       </button>
       <div
-        className="text-t1 mt-3 flex cursor-pointer justify-center"
+        className="text-t1 mt-3 flex justify-center cursor: pointer;"
         style={{
           color: "rgb(88, 86, 213)",
           fontSize: "14px",
-          marginBottom: "10px",
+          marginTop: "10px",
+          color: "var(--secondary-color)",
         }}
         onClick={() => {
           setIsVisible(false);
           setIsSignupPopupVisible(true);
         }}
       >
-        eqweqwqwe
+        Зарегистрироваться
       </div>
     </>
   );

@@ -21,7 +21,7 @@
 .mainFooter__contacts__li {
   margin-top: 8px;
   color: #ecebeb;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px); 
 }
 .mainFooter__info__li:nth-child(1) {
   margin-top: 13px;
@@ -50,7 +50,7 @@
 }
 .mainFooter__info__h4,
 .mainFooter__contacts__h4 {
-  font-size: 24px;
+  font-size: clamp(18px, 2.5vw, 24px);
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -103,7 +103,7 @@
   margin-left: 15px;
 }
 .mainFooter__media__p {
-  font-size: 15px;
+  font-size: clamp(13px, 2vw, 15px);
   color: #ecebeb;
   text-align: center;
   margin-top: 20px;
