@@ -110,10 +110,7 @@ import React, { useState } from "react";
                        Скидка: {item.discount || "Нет данных"}
                      </p>
                      <p className="description">{item.description}</p>
-                     <p className="type">Тип: {item.type}</p>
-                     <p className="date">
-                       Дата: {new Date(item.date).toLocaleDateString()}
-                     </p>
+                     
                    </div>
                  </div>
                ))
