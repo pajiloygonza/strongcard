@@ -6,6 +6,7 @@ import Main from '../Main';
 import BusinessComponent from '../BusinessComponent';
 import AboutCard from '../AboutCard';
 import { places } from '../../data';
+import CatalogSales from '../CatalogSales';
 export const RoutesComponent = () => {
     return (
       <div className="routes-main">
@@ -14,6 +15,7 @@ export const RoutesComponent = () => {
           <Route path="/" element={<Main />} />
           <Route path="/business" element={<BusinessComponent />} />
           <Route path="/about/:id" element={<AboutCard places={places} />} />
+          <Route path='/catalogSales' element={<CatalogSales />} />
           {/* <Route path ="/sales" element={} /> */}
           {/* <Route path ="/contacts" element={} /> */}
           {/* <Route path ="/faq" element={} /> */}

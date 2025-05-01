@@ -15,6 +15,7 @@ const Catalog = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [cartItems, setCartItems] = useState([]); // Состояние для корзины
   const [isCartOpen, setIsCartOpen] = useState(false); // Состояние для попапа корзины
+  const [showNotification, setShowNotification] = useState(false); // Состояние для уведомления
 
   const categoryOptions = [
     { value: "", label: "Все" },
@@ -55,6 +56,12 @@ const Catalog = () => {
       }
       return [...prevItems, item];
     });
+
+    // Показать уведомление на 1 секунду
+    setShowNotification(true);
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 1000);
   };
 
   const removeFromCart = (id) => {
@@ -68,6 +75,9 @@ const Catalog = () => {
   return (
     <div className="catalog">
       <div className="catalog__container">
+        {showNotification && (
+          <div className="notification">Товар добавлен в корзину!</div>
+        )}
         <div className="catalog__filter">
           <div className="catalog__filter__options">
             <label>
