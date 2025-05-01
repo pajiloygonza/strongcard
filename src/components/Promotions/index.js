@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import "./style.css";
 import { places } from "../../data";
 import BannerAd from "../BannerAd";
-import CustomSelect from "../CustomSelect";
-
 const Promotions = () => {
-  const [sortOption, setSortOption] = useState("dateAdded");
-
+  const [sortOption] = useState("dateAdded");
   const sortedGoods = [...places].sort((a, b) => {
     if (sortOption === "dateAdded") return b.id - a.id;
     if (sortOption === "releaseDate") return b.name.localeCompare(a.name);
     return 0;
   });
-
   return (
     <div className="catalog">
       <div className="catalog__container">

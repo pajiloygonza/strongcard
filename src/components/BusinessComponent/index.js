@@ -14,7 +14,7 @@ const BusinessComponent = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [setIsFormValid] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +54,7 @@ const BusinessComponent = () => {
   useEffect(() => {
     const validationErrors = validate();
     setIsFormValid(Object.keys(validationErrors).length === 0);
-  }, [formData]);
+  }, [validate, setIsFormValid]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import "./App.css";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import RoutesComponent from "./components/RoutesComponent";
 
-import { useSelector } from "react-redux";
-import { PopupProvider } from "./constants/PopupContext";
+import "./i18n";
+
+// import { useSelector } from "react-redux";
+// import { PopupProvider } from "./constants/PopupContext";
 import { Login } from "./containers/login";
 import { Signup } from "./containers/signup";
 import { SignupCode } from "./containers/signup-code";
 import { SignupPassword } from "./containers/signup-password";
-import Promotions from "./components/Promotions";
+// import Promotions from "./components/Promotions";
 
 function App() {
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false);
   const [isSignupPopupVisible, setIsSignupPopupVisible] = useState(false);

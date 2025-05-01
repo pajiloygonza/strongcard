@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./style.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -6,30 +6,38 @@ import { places } from "../../data";
 import Buttons from "../Buttons";
 import { Link } from "react-router-dom";
 import BannerAd from "../BannerAd";
+
 const Cards = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [prevPage, setPrevPage] = useState(1);
   const [animationClass, setAnimationClass] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
- 
-  const filteredPlaces = places.filter((place) => {
-    const addedDate = new Date(place.added);
+  // Мемоизируем отфильтрованные данные
+  const filteredPlaces = useMemo(() => {
     const now = new Date();
-  
-    
-    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1); 
-    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59); 
-  
-    
-    return addedDate >= startOfMonth && addedDate <= endOfMonth;
-  });
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+
+    return places.filter((place) => {
+      const addedDate = new Date(place.added);
+      return addedDate >= startOfMonth && addedDate <= endOfMonth;
+    });
+  }, [places]);
 
   const totalPages = Math.ceil(filteredPlaces.length / itemsPerPage);
 
+  // Мемоизируем пагинацию
+  const paginatedPlaces = useMemo(() => {
+    return filteredPlaces.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+  }, [filteredPlaces, currentPage, itemsPerPage]);
+
   useEffect(() => {
     const handleResize = () => {
-      setItemsPerPage(3);
+      setItemsPerPage(3); // Тут можно динамически менять значение в зависимости от ширины, если нужно
     };
 
     window.addEventListener("resize", handleResize);
@@ -56,11 +64,6 @@ const Cards = () => {
       setCurrentPage(page);
     }
   };
-
-  const paginatedPlaces = filteredPlaces.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
 
   return (
     <div className="cards-banner">

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Map from "../Map";
 import "./style.css";
-import Banner from "../Banner";
+// import Banner from "../Banner";
 import Cards from "../Cards";
 import PromotionCarousel from "../PromotionCarousel";
 import { places, promotions } from "../../data";
-import Catalog from "../Catalog";
+// import Catalog from "../Catalog";
 
 const Main = () => {
   return (

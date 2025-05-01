@@ -12,9 +12,10 @@ const sortOptions = [
 const Catalog = () => {
   const [sortOption, setSortOption] = useState("dateAdded");
   const [minDiscount, setMinDiscount] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState(""); // Для фильтрации по категории
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [cartItems, setCartItems] = useState([]); // Состояние для корзины
+  const [isCartOpen, setIsCartOpen] = useState(false); // Состояние для попапа корзины
 
-  // Извлекаем уникальные категории из places
   const categoryOptions = [
     { value: "", label: "Все" },
     ...Array.from(new Set(places.map((place) => place.category))).map(
@@ -22,21 +23,19 @@ const Catalog = () => {
     ),
   ];
 
-  // Фильтруем заведения по категории и скидке
   const filteredGoods = places.filter((item) => {
-    const discountValue = parseInt(item.discount.replace(/\D/g, ""), 10); // Удаляем все нечисловые символы
+    const discountValue = parseInt(item.discount.replace(/\D/g, ""), 10);
     const matchesCategory =
       selectedCategory === "" || item.category === selectedCategory;
     return discountValue >= minDiscount && matchesCategory;
   });
 
-  // Сортируем заведения
   const sortedGoods = [...filteredGoods].sort((a, b) => {
     if (sortOption === "dateAdded") {
-      return new Date(b.added) - new Date(a.added); // Сортировка по дате добавления
+      return new Date(b.added) - new Date(a.added);
     }
     if (sortOption === "releaseDate") {
-      return a.name.localeCompare(b.name, "ru", { sensitivity: "base" }); // Сортировка по алфавиту
+      return a.name.localeCompare(b.name, "ru", { sensitivity: "base" });
     }
     return 0;
   });
@@ -47,6 +46,23 @@ const Catalog = () => {
     const value =
       ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
     slider.style.setProperty("--slider-value", `${value}%`);
+  };
+
+  const addToCart = (item) => {
+    setCartItems((prevItems) => {
+      if (prevItems.find((cartItem) => cartItem.id === item.id)) {
+        return prevItems; // Если товар уже в корзине, не добавляем его снова
+      }
+      return [...prevItems, item];
+    });
+  };
+
+  const removeFromCart = (id) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
+
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
   };
 
   return (
@@ -77,42 +93,21 @@ const Catalog = () => {
               onChange={setSelectedCategory}
             />
           </div>
+          <div className="catalog__selects">
+            <CustomSelect
+              label="Сортировать по:"
+              options={sortOptions}
+              selectedValue={sortOption}
+              onChange={setSortOption}
+            />
+          </div>
         </div>
         <div className="catalog__list">
-          <h1 className="catalog__list__title">Список Услуг</h1>
-          <div className="sorting__selects__and__filter">
-            <div className="catalog__list__sorting">
-              <CustomSelect
-                label="Сортировать по:"
-                options={sortOptions}
-                selectedValue={sortOption}
-                onChange={setSortOption}
-              />
-            </div>
-            <div className="catalog__selects selects__in__catalog">
-              <CustomSelect
-                label="Категории"
-                options={categoryOptions}
-                selectedValue={selectedCategory}
-                onChange={setSelectedCategory}
-              />
-            </div>
-            <div className="catalog__filter__options filter__in__catalog">
-              <label>
-                Скидка:
-                <input
-                  type="range"
-                  className="slider"
-                  value={minDiscount}
-                  onChange={handleSliderChange}
-                  min="0"
-                  max="100"
-                  step="5"
-                  style={{ "--slider-value": `${minDiscount}%` }}
-                />
-                <div className="discount-value">{minDiscount}%</div>
-              </label>
-            </div>
+          <div className="title__and__cart">
+            <h1 className="catalog__list__title">Список Услуг</h1>
+            <button className="open-cart" onClick={toggleCart}>
+              Открыть корзину
+            </button>
           </div>
           <div className="catalog__list__goods">
             {sortedGoods.length > 0 ? (
@@ -128,6 +123,9 @@ const Catalog = () => {
                     <p className="address">{item.address}</p>
                     <p className="phone">Телефон: {item.phone}</p>
                     <p className="city">{item.city}</p>
+                    <button className="add" onClick={() => addToCart(item)}>
+                      Добавить в корзину
+                    </button>
                   </div>
                 </div>
               ))
@@ -138,6 +136,32 @@ const Catalog = () => {
             )}
           </div>
         </div>
+        {isCartOpen && (
+          <div className="cart-popup">
+            <div className="cart-popup__content">
+              <button className="close-cart" onClick={toggleCart}>
+                Закрыть
+              </button>
+              <h2>Корзина</h2>
+              {cartItems.length === 0 ? (
+                <p className="p__cart">Корзина пуста</p>
+              ) : (
+                cartItems.map((item) => (
+                  <div key={item.id} className="cart-item">
+                    <h3 className="cart-popup__content__h3">{item.name}</h3>
+                    <p>Скидка: {item.discount}</p>
+                    <button
+                      className="cart-item__remove"
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      Удалить
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        )}
         <BannerAd />
       </div>
     </div>
