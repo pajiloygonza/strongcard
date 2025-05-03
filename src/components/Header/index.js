@@ -121,8 +121,14 @@ const Header = ({ setIsLoginPopupVisible, setIsSignupPopupVisible }) => {
               <Link to="/catalog">Каталог</Link>
             </li>
             <li className="header__nav__bottom__list__item">
-              <Link to="/catalogSales">Каталог Скидок</Link>
+              <Link to="/catalog">Каталог</Link>
             </li>
+            <li className="header__nav__bottom__list__item">
+              <Link to="/catalog">Каталог</Link>
+            </li>
+            {/* <li className="header__nav__bottom__list__item">
+              <Link to="/catalogSales">Каталог Скидок</Link>
+            </li> */}
           </ul>
           <div className="header__nav__bottom__social">
             <div className="header__nav__bottom__phone">

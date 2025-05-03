@@ -95,7 +95,7 @@ const Catalog = () => {
               <div className="discount-value">{minDiscount}%</div>
             </label>
           </div>
-          <div className="catalog__selects">
+          <div className="catalog__selects ">
             <CustomSelect
               label="Категории"
               options={categoryOptions}
@@ -103,7 +103,7 @@ const Catalog = () => {
               onChange={setSelectedCategory}
             />
           </div>
-          <div className="catalog__selects">
+          <div className="catalog__selects ">
             <CustomSelect
               label="Сортировать по:"
               options={sortOptions}
@@ -118,6 +118,39 @@ const Catalog = () => {
             <button className="open-cart" onClick={toggleCart}>
               Открыть корзину
             </button>
+          </div>
+          <div className="catalog__filter__options filter__in_main">
+
+           <label className="filter__label">
+              Скидка:
+              <input
+                type="range"
+                className="slider"
+                value={minDiscount}
+                onChange={handleSliderChange}
+                min="0"
+                max="100"
+                step="5"
+                style={{ "--slider-value": `${minDiscount}%` }}
+              />
+              <div className="discount-value">{minDiscount}%</div>
+            </label>
+            </div>
+          <div className="catalog__selects in_main">
+            <CustomSelect
+              label="Категории"
+              options={categoryOptions}
+              selectedValue={selectedCategory}
+              onChange={setSelectedCategory}
+            />
+          </div>
+          <div className="catalog__selects in_main">
+            <CustomSelect
+              label="Сортировать по:"
+              options={sortOptions}
+              selectedValue={sortOption}
+              onChange={setSortOption}
+            />
           </div>
           <div className="catalog__list__goods">
             {sortedGoods.length > 0 ? (
