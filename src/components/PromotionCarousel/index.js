@@ -91,7 +91,8 @@ const PromotionCarousel = ({ promotions }) => {
           <div className={`swiper-container ${animationClass}`}>
             <Swiper className="mySwiper">
               {paginatedPromotions.map((promotion, index) => {
-                const { days, hours, minutes, isCritical } =
+                const { isCritical } =  
+                // days, hours, minutes,
                   timeLeft[(currentPage - 1) * itemsPerPage + index];
                 return (
                   <SwiperSlide key={index}>

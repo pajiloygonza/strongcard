@@ -21,6 +21,11 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
   padding: 1rem;
 }
+.title__and__cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .catalog__filter {
   min-width: 270px;
   height: 510px;
@@ -28,7 +33,7 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .catalog__filter__options {
-  padding: 1rem;
+  padding: 1rem 1rem 9px 1rem;
   list-style: none;
 }
 .catalog__filter__back {
@@ -241,7 +246,6 @@
   border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 5px;
-  width: 200px;
 }
 .catalog__filter__options label {
   font-weight: 500;
@@ -249,13 +253,14 @@
 .custom-select__selected:hover {
   border: 1px solid var(--secondary-color);
 }
-.custom-select__label {
+/* .custom-select__label {
   white-space: nowrap;
   display: flex;
   flex-direction: column;
   font-weight: 500;
   gap: 8px;
-}
+  width: 100%;
+} */
 .catalog__list > .catalog__list__sorting > .custom-select__label {
   display: flex;
   align-items: center;
@@ -281,16 +286,22 @@
   display: none;
 }
 @media (min-width: 860px) {
-  .filter__in__list {
-    display: block;
-  }
-  .selects__in__list {
-    display: block;
+  .in_main, .filter__in_main{
+    display: none;
   }
 }
-@media (max-width: 860px) {
+@media (max-width: 859px) {
+  .in_main, .filter__in_main{
+    display: block;
+  }
   .selects__in__catalog,
   .filter__in__catalog {
+    display: block;
+  }
+  .filter__label{
+    max-width: 200px;
+  }
+  .custom-select__selected {
     display: block;
   }
   .filter__in__catalog {
@@ -313,11 +324,8 @@
   }
   .catalog__filter__options {
     padding: 0px;
-    margin-top: 11px;
-  }
-  .catalog__filter__options {
-    padding: 0rem;
     margin-top: 5px;
+    max-width: 200px;
   }
   .sorting__selects__and__filter {
     display: flex;
@@ -334,6 +342,9 @@
 }
 @media (max-width: 555px) {
   .catalog__list__goods__card {
+    border: 0px;
+  }
+  .catalog__list__goods__card {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -348,5 +359,133 @@
   }
   .catalog__list {
     width: 400px !important;
+  }
+}
+.add {
+  max-width: 200px;
+  width: 100%;
+  height: 30px;
+  background: var(--secondary-color);
+  border: 0.1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: all 0.15s ease-in-out;
+  font-size: clamp(14px, 2vw, 16px);
+  margin-bottom: 7px;
+}
+.add:hover {
+  background: var(--primary-color);
+  color: white;
+}
+.cart-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cart-popup__content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-cart {
+  background: #ff5c57;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  float: right;
+}
+
+.close-cart:hover {
+  background: #e04b4b;
+}
+
+.open-cart {
+  padding: 10px 20px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.open-cart:hover {
+  background: var(--secondary-color);
+}
+.cart-popup__content__h3 {
+  margin-top: 15px;
+}
+/* .cart-item{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+} */
+.cart-item__remove {
+  padding: 5px 10px;
+  background: #ff5c57;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+}
+
+.cart-item__remove:hover {
+  background: #e04b4b;
+  transform: scale(1.05);
+}
+
+.cart-item__remove:active {
+  background: #c74444;
+  transform: scale(0.95);
+}
+.p__cart {
+  margin-top: 5px;
+}
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 1000;
+  animation: fadeInOut 1s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10%,
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }

@@ -28,7 +28,7 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .catalog-sales__filter__options {
-  padding: 1rem;
+  padding: 1rem 1rem 9px 1rem;
   list-style: none;
 }
 .catalog-sales__filter__back {
@@ -124,10 +124,10 @@
 }
 .catalog-sales__list__promotions__card {
   width: 100%;
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 2px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 2px;
 }
 .catalog-sales__list__promotions__card:nth-child(1) {
   margin-top: 15px;
@@ -305,7 +305,7 @@
 
   .catalog-sales__filter__options {
     padding: 0px;
-    margin-top: 5px; 
+    margin-top: 5px;
   }
 
   .catalog-sales__list__sorting__and__filter {
@@ -322,16 +322,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border: 1px solid #ccc; 
-  padding: 6px 10px; 
+  border: 1px solid #ccc;
+  padding: 6px 10px;
   box-sizing: border-box;
   background-color: #fff;
   cursor: pointer;
 }
-
-
-
-
 
 @media (max-width: 583px) {
   .catalog-sales__list__sorting__and__filter {
@@ -344,6 +340,7 @@
   .catalog-sales__list__promotions__card {
     flex-direction: column;
     align-items: flex-start;
+    border: 0px;
   }
 
   .catalog-sales__list__promotions__card__info {

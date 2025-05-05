@@ -12,6 +12,7 @@ const ButtonFilter = () => {
   const [isCityDropdownVisible, setIsCityDropdownVisible] = useState(false);
 
   const popupRef = useRef(null);
+  const logoRef = useRef(null);
 
   const categories = [
     { value: "", label: "Все" },
@@ -61,7 +62,11 @@ const ButtonFilter = () => {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target) &&
+        (!logoRef.current || !logoRef.current.contains(event.target))
+      ) {
         setIsButtonListVisible(false);
         setIsCategoryDropdownVisible(false);
         setIsCityDropdownVisible(false);
@@ -75,7 +80,11 @@ const ButtonFilter = () => {
 
   return (
     <>
-      <button className="map__search__menu" onClick={handleButtonClick}>
+      <button
+        className="map__search__menu"
+        onClick={handleButtonClick}
+        ref={logoRef} // Реф для логотипа
+      >
         <img
           className="map__search__menu__img"
           src={sliderMenu}

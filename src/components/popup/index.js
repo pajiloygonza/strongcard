@@ -1,8 +1,5 @@
 import React, { useRef } from "react";
 import "./assets/css/style.css";
-
-import { Link } from "react-router-dom";
-
 export const Popup = ({ isVisible, setIsVisible, children }) => {
   const contentRef = useRef(null);
 

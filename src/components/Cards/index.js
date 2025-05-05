@@ -1,37 +1,44 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./style.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/pagination";
 import { places } from "../../data";
 import Buttons from "../Buttons";
 import { Link } from "react-router-dom";
 import BannerAd from "../BannerAd";
+import { Pagination } from "swiper/modules";
+
 const Cards = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [prevPage, setPrevPage] = useState(1);
   const [animationClass, setAnimationClass] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
- 
-  const filteredPlaces = places.filter((place) => {
-    const addedDate = new Date(place.added);
-    const now = new Date();
-  
-    
-    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1); 
-    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59); 
-  
-    
-    return addedDate >= startOfMonth && addedDate <= endOfMonth;
-  });
+  // ❌ Удалил фильтрацию по дате
+  const filteredPlaces = useMemo(() => places, []);
 
   const totalPages = Math.ceil(filteredPlaces.length / itemsPerPage);
 
+  const paginatedPlaces = useMemo(() => {
+    return filteredPlaces.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+  }, [filteredPlaces, currentPage, itemsPerPage]);
+
   useEffect(() => {
     const handleResize = () => {
-      setItemsPerPage(3);
+      if (window.innerWidth <= 768) {
+        setItemsPerPage(1);
+      } else if (window.innerWidth <= 1024) {
+        setItemsPerPage(2);
+      } else {
+        setItemsPerPage(3);
+      }
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -57,11 +64,6 @@ const Cards = () => {
     }
   };
 
-  const paginatedPlaces = filteredPlaces.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
   return (
     <div className="cards-banner">
       <div className="cards-banner__content">
@@ -70,34 +72,47 @@ const Cards = () => {
             <h2 className="cards-banner__title">Новые компании</h2>
           </div>
           <div className={`swiper-container ${animationClass}`}>
-            <Swiper allowTouchMove={false}>
-              {paginatedPlaces.map((place) => (
-                <SwiperSlide key={place.id}>
-                  <Link to={`/about/${place.id}`} className="cards-banner__link">
-                    <div className="cards-banner__place">
-                      <div className="cards-banner__header">
-                        <div className="cards-banner__discount">
-                          {place.discount}
+            {paginatedPlaces.length > 0 ? (
+              <Swiper
+                slidesPerView={itemsPerPage}
+                spaceBetween={30}
+                pagination={{ clickable: true }}
+                modules={[Pagination]}
+                className="mySwiper"
+              >
+                {paginatedPlaces.map((place) => (
+                  <SwiperSlide key={place.id}>
+                    <Link
+                      to={`/about/${place.id}`}
+                      className="cards-banner__link"
+                    >
+                      <div className="cards-banner__place">
+                        <div className="cards-banner__header">
+                          <div className="cards-banner__discount">
+                            {place.discount}
+                          </div>
+                          <div className="cards-banner__image-container">
+                            <img
+                              src={place.image}
+                              alt={place.name}
+                              className="cards-banner__image"
+                            />
+                          </div>
                         </div>
-                        <div className="cards-banner__image-container">
-                          <img
-                            src={place.image}
-                            alt={place.name}
-                            className="cards-banner__image"
-                          />
+                        <div className="cards-banner__info">
+                          <span className="cards-banner__category">
+                            {place.category}
+                          </span>
+                          <h3 className="cards-banner__name">{place.name}</h3>
                         </div>
                       </div>
-                      <div className="cards-banner__info">
-                        <span className="cards-banner__category">
-                          {place.category}
-                        </span>
-                        <h3 className="cards-banner__name">{place.name}</h3>
-                      </div>
-                    </div>
-                  </Link>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                    </Link>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              <p className="no-data">Нет данных для отображения</p>
+            )}
           </div>
           <Buttons
             onPageChange={handlePageChange}
